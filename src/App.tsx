@@ -1,17 +1,20 @@
 import "./App.css";
 import Student from "./Components/Student.Component/Student";
-import {IStudents} from "./types"
+import { IStudents } from "./types";
+import { useState } from "react";
+import React from "react";
 function App() {
-
   const Courses_List: string[] = ["HTML", "CSS", "REACT"];
-  const studentsList: Array<IStudents> = [
-    { id:"123" ,
+  const InitialList: Array<IStudents> = [
+    {
+      id: "123",
       CoursesList: Courses_List,
       age: 20,
       IsGraduated: true,
       name: "abood",
     },
-    { id:"456" ,
+    {
+      id: "456",
       CoursesList: [
         "HARVARD CS50",
         "SOFTWARE ENGINEERING",
@@ -23,38 +26,53 @@ function App() {
       IsGraduated: false,
       name: "Modmod",
     },
-    { id:"789" ,
+    {
+      id: "789",
       CoursesList: Courses_List,
       age: 19,
       IsGraduated: true,
       name: "MOHAMMED",
     },
-    { id:"101122" ,
+    {
+      id: "101122",
       CoursesList: Courses_List,
       age: 12,
       IsGraduated: false,
       name: "ALI",
     },
   ];
-
-  
+  const [studentsList, SetstudentsList] = useState<IStudents[]>(InitialList);
+  const removeFirstStudent = () => {
+    const newList = [...studentsList];
+    newList.shift();
+    SetstudentsList(newList);
+  };
+  const removeLastStudent = () => {
+    const newList = [...studentsList];
+    newList.pop();
+    SetstudentsList(newList);
+  };
 
   return (
-    <div className="App">
-      
-      <h1 style={{ color: "lightgreen" }}>Welcome to GSG React Course</h1>
-      {studentsList.map((student, index) => (
-        <Student
-          key={index + student.toString()}
-          id={student.id}
-          CoursesList={student.CoursesList}
-          age={student.age}
-          IsGraduated={student.IsGraduated}
-          name={student.name}
-        />
-        
-      ))}
-    </div>
+      <div className="App">
+        <h1 style={{ color: "lightgreen" }}>Welcome to GSG React Course</h1>
+          <button onClick={removeFirstStudent} style={{ width: "150px" }}>
+            remove First Student
+          </button>
+          <button onClick={removeLastStudent} style={{ width: "150px" }}>
+            remove Last Student
+          </button>
+        {studentsList.map((student, index) => (
+          <Student
+            key={index + student.toString()}
+            id={student.id}
+            CoursesList={student.CoursesList}
+            age={student.age}
+            IsGraduated={student.IsGraduated}
+            name={student.name}
+          />
+        ))}
+      </div>
   );
 }
 

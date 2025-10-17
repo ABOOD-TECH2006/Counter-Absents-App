@@ -9,7 +9,7 @@ const CoursesList = (props: Iprops) => {
         //! each element and you must add the key on the root element and the root
         //! element here is li */}
         {props.list.map((item,index) => (
-          <li key={index + item}><b>{item}</b> </li>
+          <li key={index + item}><b>{item}</b></li>
           
           
         ))}

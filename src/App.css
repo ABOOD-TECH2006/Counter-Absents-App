@@ -13,11 +13,14 @@
   }
 }
 button{
-  width: 50px;
-  height: 20px;
+  width: 30px;
+  height: 20px; 
   color: #000;
-  
+  border-radius: 20vmax;
+  border-color:#ffff;
+  margin-left: 5px;
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

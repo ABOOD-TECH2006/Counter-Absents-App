@@ -8,11 +8,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: red;
+  background-color: rgb(209, 180, 180);
+  margin-block: 150px;
+  display: flex;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ 
