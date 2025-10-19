@@ -42,6 +42,7 @@ function App() {
     },
   ];
   const [studentsList, SetstudentsList] = useState<IStudents[]>(InitialList);
+  const [TotalAbsents,SetTotalAbsents] = useState(0)
   const removeFirstStudent = () => {
     const newList = [...studentsList];
     newList.shift();
@@ -52,7 +53,12 @@ function App() {
     newList.pop();
     SetstudentsList(newList);
   };
-
+   const HandleAbsentsChange = (name:string,change:number)=>{
+    console.log("OnAbsentsChange");
+    console.log(`The Name Is: ${name} and the Absents Is : ${change}`);
+    SetTotalAbsents(TotalAbsents + change)
+    
+   }
   return (
       <div className="App">
         <h1 style={{ color: "lightgreen" }}>Welcome to GSG React Course</h1>
@@ -62,6 +68,8 @@ function App() {
           <button onClick={removeLastStudent} style={{ width: "150px" }}>
             remove Last Student
           </button>
+          <br />
+          <b>Total Absents : {TotalAbsents}</b>
         {studentsList.map((student, index) => (
           <Student
             key={index + student.toString()}
@@ -70,6 +78,7 @@ function App() {
             age={student.age}
             IsGraduated={student.IsGraduated}
             name={student.name}
+            OnAbsentsChange={HandleAbsentsChange}
           />
         ))}
       </div>
